@@ -19,7 +19,6 @@ fix-code:  ## Fix some code style
 	@isort .
 	@black .
 
-
 outdated: ## Show outdated dependencies
 	@pip list --outdated --format=columns
 
