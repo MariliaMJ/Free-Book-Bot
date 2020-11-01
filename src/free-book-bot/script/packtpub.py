@@ -1,6 +1,8 @@
 import datetime
-from httplib2 import Http
 from json import dumps, loads
+
+from httplib2 import Http
+
 
 #
 # Hangouts Chat incoming webhook quickstart
@@ -9,7 +11,7 @@ def main():
     http_obj = Http()
     url = '<URL-PROVIDED-BY-GOOGLE-CHAT>'
     packtpub_url = 'https://www.packtpub.com/packt/offers/free-learning'
-    
+
     # get current offers
     now = datetime.datetime.now()
     nowDate = now.strftime('%Y-%m-%d')
@@ -31,9 +33,10 @@ def main():
 
     # send info with bot
     bot_message = {
-        'text' : f'Free book, from <{packtpub_url}|Packtpub> \n\n Book: {bookTitle}\n Cover: {bookCover}',
+        'text': f'Free book, from <{packtpub_url}|Packtpub> \n\n Book: '
+                f'{bookTitle}\n Cover: {bookCover}'
     }
-    message_headers = { 'Content-Type': 'application/json; charset=UTF-8'}
+    message_headers = {'Content-Type': 'application/json; charset=UTF-8'}
     response = http_obj.request(
         uri=url,
         method='POST',
@@ -41,6 +44,7 @@ def main():
         body=dumps(bot_message),
     )
     print(response)
+
 
 if __name__ == '__main__':
     main()
